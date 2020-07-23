@@ -39,21 +39,19 @@ public class Product {
 	@Column(name="price")
 	private float Price;
 	
+	@Column(name="barcode")
+	private String Barcode;
+
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_category")
+	@JoinColumn(name="category_id")
 	private Category category;
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="id_detail")
+	@JoinColumn(name="detail_id")
 	private ProductDetail detail;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_enterprise")
-	private Enterprise enterprise;
-	
 	@OneToMany(fetch= FetchType.LAZY,
-			mappedBy="products",
-			cascade= CascadeType.ALL)
+			mappedBy="products")
 	private List<Stock> stocks;
 	
 	public void add(Stock tempStock) {
@@ -133,13 +131,7 @@ public class Product {
 		this.branches = branches;
 	}
 */
-	public Enterprise getEnterprise() {
-		return enterprise;
-	}
 
-	public void setEnterprise(Enterprise enterprise) {
-		this.enterprise = enterprise;
-	}
 
 	public Category getCategory() {
 		return category;
@@ -165,9 +157,7 @@ public class Product {
 		Price = price;
 	}
 
-	@Column(name="barcode")
-	private String Barcode;
-
+	
 	public int getId() {
 		return Id;
 	}

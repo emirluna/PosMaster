@@ -10,12 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
+@Table(name="Users")
 public class Users {
 
 	@Id
@@ -29,7 +30,7 @@ public class Users {
 	@Column(name="last_name")
 	private String LastName;
 	
-	@Column(name="username")
+	@Column(name="user_name")
 	private String UserName;
 	
 	@Column(name="password")
@@ -41,10 +42,12 @@ public class Users {
 	@Column(name="phone")
 	private String Phone;
 
-	/*@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_enterprise")
-	private Enterprise enterprise;
-	*/
+	@OneToOne(fetch= FetchType.LAZY,
+			cascade=CascadeType.ALL)
+	@JoinColumn(name="address_id")
+	private Address address;
+	
+	
 	
 	public Users() {}
 	
@@ -126,6 +129,18 @@ public class Users {
 
 	public void setPhone(String phone) {
 		Phone = phone;
+	}
+
+	
+	
+
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 

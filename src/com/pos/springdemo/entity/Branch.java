@@ -31,13 +31,14 @@ public class Branch {
 	@Column(name="name")
 	private String BranchName;
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_enterprise")
-	private Enterprise enterprise;
+
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="address_id")
+	private Address address;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_address")
-	private Address address;
+	@JoinColumn(name="user_id")
+	private Address User;
 	
 
 	@OneToMany(fetch= FetchType.LAZY,
@@ -119,28 +120,23 @@ public void add(Product tempProduct) {
 		this.products = products;
 	}
 */
-	public Enterprise getEnterprise() {
+	/*public Enterprise getEnterprise() {
 		return enterprise;
 	}
 
 	public void setEnterprise(Enterprise enterprise) {
 		this.enterprise = enterprise;
 	}
-
+*/
 	
-	public Address getAddress() {
-		return address;
-	}
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+	public Branch() {}
 	
+
 	public Branch(String branchName) {
 		BranchName = branchName;
 	}
 	
-	public Branch() {}
 
 	public int getId() {
 		return Id;
@@ -156,6 +152,23 @@ public void add(Product tempProduct) {
 
 	public void setBranchName(String branchName) {
 		BranchName = branchName;
+	}
+
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
+	public Address getUser() {
+		return User;
+	}
+
+	public void setUser(Address user) {
+		User = user;
 	}
 
 	@Override

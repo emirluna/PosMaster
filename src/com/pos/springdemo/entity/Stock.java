@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Branch_Product_Stock")
+@Table(name = "Stocks")
 public class Stock {
 
 	@Id
@@ -36,11 +36,11 @@ public class Stock {
 
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="id_product")
+	@JoinColumn(name="product_id")
 	private Product products;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_branch")
+	@JoinColumn(name="branch_id")
 	private Branch branches;
 	
 	

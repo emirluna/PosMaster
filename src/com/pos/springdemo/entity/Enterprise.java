@@ -19,7 +19,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Enterprise")
 public class Enterprise {
-
+	
+	/**
+	 * 
+	 * Ignore this Entity, use only like a reference
+	 * 
+	 * **/
+	
+	
+	
+/*
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -141,6 +150,6 @@ public void setBranches(List<Branch> branches) {
 	}
 	
 	
-	
+	*/
 	
 }
