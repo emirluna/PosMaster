@@ -1,4 +1,4 @@
-package com.pos.springdemo.service;
+package com.pos.springdemo.service.impl;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import com.pos.springdemo.dao.EnterpriseDAO;
 import com.pos.springdemo.entity.Branch;
 import com.pos.springdemo.entity.Enterprise;
 import com.pos.springdemo.entity.Stock;
+import com.pos.springdemo.service.EnterpriseService;
 
 @Service
 public class EnterpriseServiceImpl implements EnterpriseService {

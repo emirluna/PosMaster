@@ -1,4 +1,4 @@
-package com.pos.springdemo.service;
+package com.pos.springdemo.service.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pos.springdemo.dao.ProductDAO;
 import com.pos.springdemo.entity.Product;
+import com.pos.springdemo.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {

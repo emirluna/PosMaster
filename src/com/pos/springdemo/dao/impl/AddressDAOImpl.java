@@ -1,4 +1,4 @@
-package com.pos.springdemo.dao;
+package com.pos.springdemo.dao.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.pos.springdemo.dao.AddressDAO;
 import com.pos.springdemo.entity.Address;
 import com.pos.springdemo.entity.Branch;
 
@@ -17,7 +18,7 @@ public class AddressDAOImpl implements AddressDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	
+	/*
 	@Override
 	public List<Address> getEnterpriseAddress(int id) {
 		Session currentSession = sessionFactory.getCurrentSession(); 
@@ -30,6 +31,7 @@ public class AddressDAOImpl implements AddressDAO {
 		
 		return address;
 	}
+*/
 
 	@Override
 	public void saveAddress(Address A) {
@@ -40,8 +42,25 @@ public class AddressDAOImpl implements AddressDAO {
 
 	@Override
 	public Address getAddressId(int id) {
-		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession(); 
+		
+		currentSession.get(Address.class, id);
+		
 		return null;
+	}
+
+	@Override
+	public void upadteAddress(Address A) {
+		Session currentSession = sessionFactory.getCurrentSession(); 
+		
+		currentSession.saveOrUpdate(A);
+	}
+
+	@Override
+	public void deleteAddress(Address A) {
+		Session currentSession = sessionFactory.getCurrentSession(); 
+		
+		currentSession.delete(A);
 	}
 
 }

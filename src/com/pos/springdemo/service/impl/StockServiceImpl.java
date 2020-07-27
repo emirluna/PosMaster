@@ -1,4 +1,4 @@
-package com.pos.springdemo.service;
+package com.pos.springdemo.service.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pos.springdemo.dao.StockDAO;
 import com.pos.springdemo.entity.Stock;
+import com.pos.springdemo.service.StockService;
 
 @Service
 public class StockServiceImpl implements StockService {

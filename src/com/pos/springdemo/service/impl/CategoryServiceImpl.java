@@ -1,4 +1,4 @@
-package com.pos.springdemo.service;
+package com.pos.springdemo.service.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pos.springdemo.dao.CategoryDAO;
 import com.pos.springdemo.entity.Category;
+import com.pos.springdemo.service.CategoryService;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {

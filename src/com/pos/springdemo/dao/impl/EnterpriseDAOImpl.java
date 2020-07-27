@@ -1,4 +1,4 @@
-package com.pos.springdemo.dao;
+package com.pos.springdemo.dao.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.pos.springdemo.dao.EnterpriseDAO;
 import com.pos.springdemo.entity.Enterprise;
 
 @Repository
