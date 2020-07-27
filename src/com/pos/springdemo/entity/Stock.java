@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -42,6 +43,37 @@ public class Stock {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="branch_id")
 	private Branch branches;
+	
+	
+/**Many to many relation block with sales start **/
+	
+	@OneToMany(fetch= FetchType.LAZY,
+			mappedBy="Stock_",
+			cascade= CascadeType.ALL)
+	private List<Order> orders;
+	
+	
+	public void add(Order tempOrder) {
+		
+		if(orders == null) {
+			orders = new ArrayList<>();
+		}		
+		orders.add(tempOrder);	
+		tempOrder.setStock_(this);
+	}
+	
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+	
+	/** End of block for sales relation  **/
+	
 	
 	
 	

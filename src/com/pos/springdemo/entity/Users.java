@@ -1,5 +1,6 @@
 package com.pos.springdemo.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -48,6 +49,34 @@ public class Users {
 	private Address address;
 	
 	
+	/**Many to many relation block with sales start **/
+	
+	@OneToMany(fetch= FetchType.LAZY,
+			mappedBy="User_",
+			cascade= CascadeType.ALL)
+	private List<Sale> sales;
+	
+	
+	public void add(Sale tempSale) {
+		
+		if(sales == null) {
+			sales = new ArrayList<>();
+		}		
+		sales.add(tempSale);	
+		tempSale.setUser_(this);
+	}
+	
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+	}
+	
+	/** End of block for sales relation  **/
 	
 	public Users() {}
 	

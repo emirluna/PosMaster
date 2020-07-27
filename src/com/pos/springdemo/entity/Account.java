@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -59,6 +60,37 @@ public class Account {
 		this.payments = payments;
 	}
 
+	
+/**Many to many relation block with sales start **/
+	
+	@OneToMany(fetch= FetchType.LAZY,
+			mappedBy="Account_",
+			cascade= CascadeType.ALL)
+	private List<Sale> sales;
+	
+	
+	public void add(Sale tempSale) {
+		
+		if(sales == null) {
+			sales = new ArrayList<>();
+		}		
+		sales.add(tempSale);	
+		tempSale.setAccount_(this);
+	}
+	
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+	}
+	
+	/** End of block for sales relation  **/
+	
+	
 	
 	public int getId() {
 		return Id;

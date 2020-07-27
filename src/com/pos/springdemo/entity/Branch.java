@@ -34,17 +34,22 @@ public class Branch {
 
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="address_id")
-	private Address address;
+	private Address Address_;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
-	private Address User;
+	private Users User_;
 	
 
 	@OneToMany(fetch= FetchType.LAZY,
 			mappedBy="branches",
 			cascade= CascadeType.ALL)
 	private List<Stock> stocks;
+	
+	@OneToMany(fetch= FetchType.LAZY,
+			mappedBy="Branch_",
+			cascade= CascadeType.ALL)
+	private List<Sale> sales;
 	
 	public void add(Stock tempStock) {
 		
@@ -64,71 +69,26 @@ public class Branch {
 		this.stocks = stocks;
 	}
 
-	/*
-	@ManyToMany(fetch=FetchType.LAZY, 
-			cascade= {CascadeType.PERSIST, CascadeType.DETACH,
-					CascadeType.REFRESH, CascadeType.MERGE})	
-	@JoinTable(
-			name="BranchProduct",
-			joinColumns=@JoinColumn(name="id_branch"),
-			inverseJoinColumns=@JoinColumn(name="id_stock"))
-	private List<Stock> stock;
 	
-	
-	public void add(Stock tempStock) {
+	public void add(Sale tempSale) {
 		
-		if(stock == null) {
-			stock = new ArrayList<>();
+		if(sales == null) {
+			sales = new ArrayList<>();
 		}		
-		stock.add(tempStock);		
+		sales.add(tempSale);	
+		tempSale.setBranch_(this);
 	}
-		
-	public List<Stock> getStock() {
-		return stock;
-	}
-
-	public void setStock(List<Stock> stock) {
-		this.stock = stock;
-	}
-
-
-
-	@ManyToMany(fetch=FetchType.LAZY, 
-			cascade= {CascadeType.PERSIST, CascadeType.DETACH,
-					CascadeType.REFRESH, CascadeType.MERGE})
-	@JoinTable(
-			name="BranchProduct",
-			joinColumns=@JoinColumn(name="id_branch"),
-			inverseJoinColumns=@JoinColumn(name="id_product"))
-	private List<Product> products;
 	
 
-public void add(Product tempProduct) {
-		
-		if(products == null) {
-			products = new ArrayList<>();
-		}
-		
-		products.add(tempProduct);
-}
-	
-	public List<Product> getProducts() {
-		return products;
+	public List<Sale> getSales() {
+		return sales;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-*/
-	/*public Enterprise getEnterprise() {
-		return enterprise;
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
 	}
 
-	public void setEnterprise(Enterprise enterprise) {
-		this.enterprise = enterprise;
-	}
-*/
-	
 
 	public Branch() {}
 	
@@ -155,21 +115,24 @@ public void add(Product tempProduct) {
 	}
 
 	
-	public Address getAddress() {
-		return address;
+	public Address getAddress_() {
+		return Address_;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddress_(Address address_) {
+		this.Address_ = address_;
 	}
 	
-	public Address getUser() {
-		return User;
+
+	public Users getUser_() {
+		return User_;
 	}
 
-	public void setUser(Address user) {
-		User = user;
+
+	public void setUser_(Users user_) {
+		User_ = user_;
 	}
+
 
 	@Override
 	public String toString() {
@@ -179,3 +142,73 @@ public void add(Product tempProduct) {
 	
 	
 }
+
+
+
+
+
+/*
+@ManyToMany(fetch=FetchType.LAZY, 
+		cascade= {CascadeType.PERSIST, CascadeType.DETACH,
+				CascadeType.REFRESH, CascadeType.MERGE})	
+@JoinTable(
+		name="BranchProduct",
+		joinColumns=@JoinColumn(name="id_branch"),
+		inverseJoinColumns=@JoinColumn(name="id_stock"))
+private List<Stock> stock;
+
+
+public void add(Stock tempStock) {
+	
+	if(stock == null) {
+		stock = new ArrayList<>();
+	}		
+	stock.add(tempStock);		
+}
+	
+public List<Stock> getStock() {
+	return stock;
+}
+
+public void setStock(List<Stock> stock) {
+	this.stock = stock;
+}
+
+
+
+@ManyToMany(fetch=FetchType.LAZY, 
+		cascade= {CascadeType.PERSIST, CascadeType.DETACH,
+				CascadeType.REFRESH, CascadeType.MERGE})
+@JoinTable(
+		name="BranchProduct",
+		joinColumns=@JoinColumn(name="id_branch"),
+		inverseJoinColumns=@JoinColumn(name="id_product"))
+private List<Product> products;
+
+
+public void add(Product tempProduct) {
+	
+	if(products == null) {
+		products = new ArrayList<>();
+	}
+	
+	products.add(tempProduct);
+}
+
+public List<Product> getProducts() {
+	return products;
+}
+
+public void setProducts(List<Product> products) {
+	this.products = products;
+}
+*/
+/*public Enterprise getEnterprise() {
+	return enterprise;
+}
+
+public void setEnterprise(Enterprise enterprise) {
+	this.enterprise = enterprise;
+}
+*/
+
