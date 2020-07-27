@@ -11,6 +11,6 @@ public interface AccountDAO {
 	public void updaAccount(Account c);
 	public Account getAccount(int id);
 	public Account searchAccount(String name);
-	public void deleteAccount(int id);
+	public void deleteAccount(Account a);
 	
 }

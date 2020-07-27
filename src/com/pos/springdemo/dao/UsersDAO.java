@@ -10,7 +10,7 @@ public interface UsersDAO {
 	public void saveUsers(Users U);
 	public void updateUsers(Users U);
 	public Users getUser(int id);
-	public Users searchUsers(String name);
-	public void deleteUsers(int id);
+	public List<Users> searchUsers(String name);
+	public void deleteUsers(Users u);
 	
 }

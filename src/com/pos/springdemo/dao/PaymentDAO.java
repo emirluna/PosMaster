@@ -13,6 +13,6 @@ public interface PaymentDAO {
 	public void updatePayment(Payment p);
 	public Payment getPayment(int id);
 	public Payment searchPayment(String name);
-	public void deletePayment(int id);
+	public void deletePayment(Payment p);
 	
 }

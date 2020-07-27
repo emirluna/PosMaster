@@ -15,5 +15,5 @@ public interface SaleDAO {
 	public void saveSale(Sale s);
 	public void updateSale(Sale s);
 	public Sale getSale(int id);
-	public void deleteSale(int id);
+	public void deleteSale(Sale s);
 }

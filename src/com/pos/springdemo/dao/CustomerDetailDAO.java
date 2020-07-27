@@ -10,6 +10,6 @@ public interface CustomerDetailDAO {
 	public void updateCustomerDetail(CustomerDetail CD);
 	public CustomerDetail getCustomerDetail(int id);
 	public CustomerDetail searchCustomerDetail(String name);
-	public void deleteCustomerDetail(int id);
+	public void deleteCustomerDetail(CustomerDetail cd);
 	
 }
