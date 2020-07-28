@@ -1,12 +1,8 @@
 package com.pos.springdemo.service.impl;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.pos.springdemo.dao.AddressDAO;
 import com.pos.springdemo.entity.Address;
 import com.pos.springdemo.service.AddressService;
@@ -17,12 +13,7 @@ public class AddressServiceImpl implements AddressService {
 	@Autowired
 	private AddressDAO addressDAO;
 	
-	@Override
-	@Transactional
-	public List<Address> getEnterpriseAddress(int id) {
-		return addressDAO.getEnterpriseAddress(id);
-	}
-
+	
 	@Override
 	@Transactional
 	public void saveAddress(Address A) {
@@ -30,9 +21,21 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
+	@Transactional
 	public Address getAddressId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return addressDAO.getAddressId(id);
+	}
+
+	@Override
+	@Transactional
+	public void upadteAddress(Address A) {
+		addressDAO.upadteAddress(A);
+	}
+
+	@Override
+	@Transactional
+	public void deleteAddress(Address A) {
+		addressDAO.deleteAddress(A);
 	}
 
 }

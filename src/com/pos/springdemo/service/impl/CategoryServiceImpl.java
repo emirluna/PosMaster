@@ -17,10 +17,42 @@ public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	private CategoryDAO categoryDAO;
 	
+	
 	@Override
 	@Transactional
-	public List<Category> getCategory() {
-		return categoryDAO.getCategory();
+	public List<Category> getCategories() {
+		categoryDAO.getCategories();
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public void saveCategory(Category c) {
+		categoryDAO.saveCategory(c);
+	}
+
+	@Override
+	@Transactional
+	public void updateCategory(Category c) { 
+		categoryDAO.updateCategory(c);
+	}
+
+	@Override
+	@Transactional
+	public Category getCategory(int id) {
+		return categoryDAO.getCategory(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Category> searchCategory(String name) {
+		return categoryDAO.searchCategory(name);
+	}
+
+	@Override
+	@Transactional
+	public void deleteCategory(Category C) {
+		categoryDAO.deleteCategory(C);
 	}
 
 }

@@ -17,16 +17,36 @@ public class BranchServiceImpl implements BranchService {
 	@Autowired
 	private BranchDAO branchDAO;
 	
-	@Override
-	@Transactional
-	public List<Branch> getBranches(int E) {
-		return branchDAO.getBranches(E);
-	}
 
 	@Override
 	@Transactional
 	public void saveBranch(Branch B) {
 		branchDAO.saveBranch(B);
+	}
+
+	@Override
+	@Transactional
+	public List<Branch> getBranches() {
+		branchDAO.getBranches();
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public void updateBranch(Branch B) {
+		branchDAO.updateBranch(B);
+	}
+
+	@Override
+	@Transactional
+	public void deleteBrnahc(Branch B) {
+		branchDAO.deleteBrnahc(B);
+	}
+
+	@Override
+	@Transactional
+	public Branch getBranch(int b) {
+		return branchDAO.getBranch(b);
 	}
 
 }

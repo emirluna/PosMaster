@@ -24,5 +24,29 @@ public class StockServiceImpl implements StockService {
 		return stockDAO.getStocks(s);
 	}
 
+	@Override
+	@Transactional
+	public void saveStock(Stock s) {
+		stockDAO.saveStock(s);
+	}
+
+	@Override
+	@Transactional
+	public void updateStock(Stock s) {
+		stockDAO.updateStock(s);
+	}
+
+	@Override
+	@Transactional
+	public Stock getStock(int id) {
+		return stockDAO.getStock(id);
+	}
+
+	@Override
+	@Transactional
+	public void deleteStock(int id) {
+		stockDAO.deleteStock(id);
+	}
+
 
 }
