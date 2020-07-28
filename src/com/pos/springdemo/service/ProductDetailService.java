@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.pos.springdemo.entity.ProductDetail;
 
-public interface ProductDetailDAO {
+public interface ProductDetailService {
 
 	public void saveProductDetail(ProductDetail p);
 	public void updateProductDetail(ProductDetail p);
