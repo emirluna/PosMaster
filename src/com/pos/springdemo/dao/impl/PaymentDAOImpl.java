@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.pos.springdemo.dao.PaymentDAO;
-import com.pos.springdemo.entity.Enterprise;
 import com.pos.springdemo.entity.Payment;
 
 @Repository

@@ -33,7 +33,7 @@
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
         <!--  <property name="jdbcUrl" value="jdbc:mysql://192.168.1.81:3306/PosAdmin?useSSL=false&amp;serverTimezone=UTC" />
         <property name="user" value="eljefe21" />-->
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/PosMaster1?useSSL=false&amp;serverTimezone=UTC" />
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/PosMaster?useSSL=false&amp;serverTimezone=UTC" />
         <property name="user" value="eljefe21" />
         <property name="password" value="#A2021a2021" /> 
 

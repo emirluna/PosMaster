@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.pos.springdemo.dao.UsersDAO;
 import com.pos.springdemo.entity.Category;
-import com.pos.springdemo.entity.Enterprise;
 import com.pos.springdemo.entity.Sale;
 import com.pos.springdemo.entity.Users;
 

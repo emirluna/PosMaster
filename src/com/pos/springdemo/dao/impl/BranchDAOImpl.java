@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.pos.springdemo.dao.BranchDAO;
 import com.pos.springdemo.entity.Branch;
-import com.pos.springdemo.entity.Enterprise;
 
 @Repository
 public class BranchDAOImpl implements BranchDAO {

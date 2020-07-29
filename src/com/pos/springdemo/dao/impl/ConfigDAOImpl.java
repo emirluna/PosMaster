@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import com.pos.springdemo.dao.ConfigDAO;
 import com.pos.springdemo.entity.Configuration;
 
+@Repository
 public class ConfigDAOImpl implements ConfigDAO {
 
 	@Override

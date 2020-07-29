@@ -35,7 +35,7 @@ public class Account {
 	@Column(name="max_available")
 	private float Max;
 
-	@OneToMany(mappedBy="account",
+	/*@OneToMany(mappedBy="account",
 			cascade= CascadeType.ALL)
 	private List<Payment> payments;
 
@@ -59,7 +59,7 @@ public class Account {
 	public void setPayments(List<Payment> payments) {
 		this.payments = payments;
 	}
-
+*/
 	
 /**Many to many relation block with sales start **/
 	

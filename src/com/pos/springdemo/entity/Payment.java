@@ -42,10 +42,10 @@ public class Payment {
 	@JoinColumn(name="user_id")
 	private Users User_;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	/*@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="account_id")
 	private Account Account_;
-
+*/
 	public int getId() {
 		return Id;
 	}
@@ -94,14 +94,14 @@ public class Payment {
 		User_ = user_;
 	}
 
-	public Account getAccount_() {
+	/*public Account getAccount_() {
 		return Account_;
 	}
 
 	public void setAccount_(Account account_) {
 		Account_ = account_;
 	}
-
+*/
 	public Payment(float amount, int method, java.sql.Date date, com.pos.springdemo.entity.Branch branch_, Users user_,
 			Account account_) {
 		Amount = amount;
@@ -109,7 +109,7 @@ public class Payment {
 		Date = date;
 		Branch_ = branch_;
 		User_ = user_;
-		Account_ = account_;
+		//Account_ = account_;
 	}
 
 	public Payment() {
@@ -118,7 +118,7 @@ public class Payment {
 	@Override
 	public String toString() {
 		return "Payment [Id=" + Id + ", Amount=" + Amount + ", Method=" + Method + ", Date=" + Date + ", Branch_="
-				+ Branch_ + ", User_=" + User_ + ", Account_=" + Account_ + "]";
+				+ Branch_ + ", User_=" + User_ + "]";
 	}
 	
 	
