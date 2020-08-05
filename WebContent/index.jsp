@@ -14,26 +14,44 @@
 </head>
 <body>
 
-Pagina de inicio (Será reemplazada por Login)
+<div class="jumbotron text-center">
+<h1>Here will be the Header</h1>
+</div>
+
+Pagina de inicio (Será reemplazada por Login
+<br>
+the content will be shown on Dashboar page)
 <br><br>
 
 
-
+<div class="container">
+ <div class="row">
+ <div class="col-sm-4">
 <a href="${pageContext.request.contextPath}/configuration/">Configurations</a>
+(Show a little important information about configuration: Time zone, Currency, last connection)
+<br><br>
+ </div>
+    <div class="col-sm-4">	
+<a href="${pageContext.request.contextPath}/branches/">Branches</a>
+(Show the name of the Active Branches and Status)
+<br><br>
+ </div>
+    <div class="col-sm-4">
+<a href="${pageContext.request.contextPath}/products/">Products</a>
+(Show three lists: Products most sold, low stock and close to expire)
+(Show a samll graph to)
+<br><br>
+ </div>
+    <div class="col-sm-4">
+<a href="${pageContext.request.contextPath}/customers/">Customers</a>
+(Two list: the most active customers and the customers with debt)
+<br><br>
+ </div>
+    <div class="col-sm-4">
+<a href="${pageContext.request.contextPath}/users/">Users</a>
+(A list of active users and status)
 
 <br><br>
-
-<a href="${pageContext.request.contextPath}/products/">Productos</a>
-
-<br><br>
-
-<a href="${pageContext.request.contextPath}/customers/">Productos</a>
-
-<br><br>
-
-<a href="${pageContext.request.contextPath}/users/">Productos</a>
-
-<br><br>
-
+</div>
 </body>
 </html>

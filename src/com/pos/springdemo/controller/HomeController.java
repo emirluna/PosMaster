@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pos.springdemo.service.AddressService;
+import com.pos.springdemo.service.ProductService;
 
 @Controller
 public class HomeController {
+
 
 	@RequestMapping("/")
 	public String home(Model theModel) {
@@ -26,11 +28,6 @@ public class HomeController {
 		return "Configurations/index-config";
 	}
 	
-	@RequestMapping("/products")
-	public String products(Model theModel) {
-		return "Products/index-products";
-	}
-	
 	@RequestMapping("/customers")
 	public String customers(Model theModel) {
 		return "Customers/index-customer";
@@ -39,6 +36,11 @@ public class HomeController {
 	@RequestMapping("/users")
 	public String users(Model theModel) {
 		return "Users/index-users";
+	}
+	
+	@RequestMapping("/branches/")
+	public String branches(Model theModel) {
+		return "Branchs/index-branch";
 	}
 	
 

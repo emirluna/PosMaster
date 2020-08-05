@@ -22,15 +22,17 @@ public class ProductDAOImpl implements ProductDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<Product> getProducts(int id) {
+	public List<Product> getProducts() {
 
 		Session currentSession = sessionFactory.getCurrentSession(); 
 		
 		Query<Product> theQuery=
-				currentSession.createQuery("from Product where", Product.class);
+				currentSession.createQuery("from Product", Product.class);
+		List<Product> products = null;
 		
-		List<Product> products = theQuery.getResultList();
-		
+		if (!theQuery.getResultList().isEmpty()) {
+			products = theQuery.getResultList();
+		}
 		
 		return products;
 	}
