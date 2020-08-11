@@ -31,21 +31,35 @@ public class Address {
 	@Column(name="number")
 	private String Number;
 	
+	@Column(name="zip_code")
+	private String ZipCode;
+	
 	
 	public Address() {}
 
 
-	public Address(String country, String state, String city, String street, String number) {
+	public Address(String country, String state, String city, String street, String number, String zipCode) {
 		Country = country;
 		State = state;
 		City = city;
 		Street = street;
 		Number = number;
+		ZipCode = zipCode;
 	}
 
 
 	public int getId() {
 		return Id;
+	}
+
+
+	public String getZipCode() {
+		return ZipCode;
+	}
+
+
+	public void setZipCode(String zipCode) {
+		ZipCode = zipCode;
 	}
 
 

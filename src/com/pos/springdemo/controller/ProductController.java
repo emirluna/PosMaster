@@ -5,64 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.pos.springdemo.entity.Enterprise;
+import com.pos.springdemo.entity.Category;
 import com.pos.springdemo.entity.Product;
-import com.pos.springdemo.service.EnterpriseService;
+import com.pos.springdemo.service.CategoryService;
 import com.pos.springdemo.service.ProductService;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
 
 	@Autowired
-	private ProductService productservice;
+	private ProductService productS;
+	
 	
 	@Autowired
-	private EnterpriseService enterpriseService;
+	private CategoryService categoryS;
 	
-	@GetMapping("/{id}")
-	public String getProdutcs(@PathVariable("id") int id, Model theModel) {
+	
+	@RequestMapping("/")
+	public String products(Model theModel) {
 		
-		List<Product> products = productservice.getProducts(id);
+		List<Product> theProducts = productS.getProducts();
+		List<Category> theCategory = categoryS.getCategories();
 		
-		theModel.addAttribute("products", products);
-		theModel.addAttribute("enterpriseId", id);
+		theModel.addAttribute("products", theProducts);
+		theModel.addAttribute("categories", theCategory);
 		
-		return "enterprise-list-products";
+		return "Products/index-products";
 	}
-	
-	
-	@GetMapping("/showFormAdd/{id}")
-	public String showFormAdd(@PathVariable("id") int id, Model theModel) {
-		
-		Product theProduct = new Product();
-		
-		theModel.addAttribute("product", theProduct);
-		theModel.addAttribute("enterpriseId", id);
-		
-		return "enterprise-product-form";
-	}
-	
-	
-	@RequestMapping("/saveProduct/{id}")
-	public String saveProduct(@PathVariable("id") int id, @ModelAttribute("product") Product newProduct) {
-		
-		Enterprise tempEnterprise = enterpriseService.getEnterprise(id);
-		
-		productservice.saveProduct(newProduct);
-		
-		tempEnterprise.add(newProduct);
-		
-		enterpriseService.updateEnterprise(tempEnterprise);
-		
-		return "redirect:/product/"+id;
-	}
-	
-	
 	
 }

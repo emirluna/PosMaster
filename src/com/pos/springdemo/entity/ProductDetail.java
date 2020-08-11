@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Product_Detail")
+@Table(name="ProductDetail")
 public class ProductDetail {
 	
 	@Id
@@ -22,6 +22,12 @@ public class ProductDetail {
 	@Column(name="description")
 	private String Description;
 
+	@Column(name="weight")
+	private float Weight;
+	
+	@Column(name="spitable")
+	private boolean Spitable;
+	
 	public int getId() {
 		return Id;
 	}
@@ -51,12 +57,30 @@ public class ProductDetail {
 		return "ProductDetail [Id=" + Id + ", Brand=" + Brand + ", Description=" + Description + "]";
 	}
 
-	public ProductDetail(String brand, String description) {
+	public ProductDetail(String brand, String description, float weight, boolean spitable) {
 		Brand = brand;
 		Description = description;
+		Weight = weight;
+		Spitable = spitable;
 	}
 	
 	public ProductDetail() {}
-	
-	
+
+	public float getWeight() {
+		return Weight;
+	}
+
+	public void setWeight(float weight) {
+		Weight = weight;
+	}
+
+	public boolean isSpitable() {
+		return Spitable;
+	}
+
+	public void setSpitable(boolean spitable) {
+		Spitable = spitable;
+	}
+
+
 }
