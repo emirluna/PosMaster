@@ -17,7 +17,7 @@
 <div>
 <div class="container">
 		<h3>Save Customer</h3>
-	 	<form:form action="save" modelAttribute="configuration"
+	 	<form:form action="save" modelAttribute="Config"
 			method="POST">
 			
 			<table>
