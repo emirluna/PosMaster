@@ -19,7 +19,8 @@
 		<h3>Save Customer</h3>
 	 	<form:form action="save" modelAttribute="Config"
 			method="POST">
-			
+			<!-- need to associate this data with customer id -->
+			<form:hidden path="Id"/>
 			<table>
 				<tr>
 					<td><label>Company Name: </label></td>

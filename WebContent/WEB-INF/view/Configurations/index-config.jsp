@@ -41,7 +41,10 @@
 			<td>${tempConfigs.ownerName}</td>
 			<td>${tempConfigs.mainEmail}</td>
 			<td>${tempConfigs.mainPhone}</td>
-			<td><a href="${pageContext.request.contextPath}/configuration/edit/${tempConfigs.id}">Edit</a></td>
+			<c:url var="updateLink" value="/configuration/edit">
+			<c:param name="id" value="${tempConfigs.id}" />
+			</c:url>
+			<td><a href="${updateLink}">Edit</a></td>
 			<td><a href="${pageContext.request.contextPath}/configuration/delete/${tempConfigs.id}">Delete</a></td>
 		</tr>
 </c:forEach>

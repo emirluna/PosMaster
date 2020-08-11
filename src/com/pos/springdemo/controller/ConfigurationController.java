@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pos.springdemo.entity.Configuration;
 import com.pos.springdemo.service.ConfigService;
@@ -48,20 +51,23 @@ public class ConfigurationController {
 		return "redirect:/configuration/";
 	}
 	
-	@RequestMapping("/edit/${id}")
-	public String editConf(Model theModel) {
+	@GetMapping("/edit")
+	public String editConf(@RequestParam("id") int id, Model theModel) {
+		Configuration theConf = configS.getConfiguration(id);
 		
+		theModel.addAttribute("Config", theConf);
 		
-		
-		return null;
+		return "Configurations/form-config";
 	}
 	
-	@RequestMapping("/delete/${id}")
-	public String deleateConf(Model theModel) {
+	@RequestMapping("/delete/{id}")
+	public String deleateConf(@PathVariable("id") int id, Model theModel) {
+
+		Configuration theConf = configS.getConfiguration(id);
 		
+		configS.deleteConfiguration(theConf);
 		
-		
-		return null;
+		return "redirect:/configuration/";
 	}
 	
 	

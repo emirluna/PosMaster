@@ -30,7 +30,7 @@ public class ConfigDAOImpl implements ConfigDAO {
 	public void saveConfiguration(Configuration C) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		currentSession.save(C);
+		currentSession.saveOrUpdate(C);
 	}
 
 	@Override
