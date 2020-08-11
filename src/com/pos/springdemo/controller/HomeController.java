@@ -23,11 +23,6 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping("/configuration/")
-	public String conf(Model theModel) {
-		return "Configurations/index-config";
-	}
-	
 	@RequestMapping("/customers")
 	public String customers(Model theModel) {
 		return "Customers/index-customer";

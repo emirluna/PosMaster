@@ -105,7 +105,7 @@ COLLATE = utf8_spanish2_ci;
 CREATE TABLE IF NOT EXISTS `PosMaster`.`Configuration` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `company_name` VARCHAR(85) NULL DEFAULT NULL,
-  `descrption` VARCHAR(45) NULL DEFAULT NULL,
+  `description` VARCHAR(45) NULL DEFAULT NULL,
   `owner_name` VARCHAR(45) NULL DEFAULT NULL,
   `main_email` VARCHAR(45) NULL DEFAULT NULL,
   `main_phone` VARCHAR(45) NULL DEFAULT NULL,
