@@ -44,9 +44,9 @@ public class ConfigServiceImpl implements ConfigService {
 
 
 	@Override
+	@Transactional
 	public List<Configuration> getConfigurations() {
-		configDao.getConfigurations();
-		return null;
+	return configDao.getConfigurations();	
 	}
 
 }

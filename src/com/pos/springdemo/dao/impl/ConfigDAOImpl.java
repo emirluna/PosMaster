@@ -58,7 +58,7 @@ public class ConfigDAOImpl implements ConfigDAO {
 				currentSession.createQuery("from Configuration", Configuration.class);
 		List<Configuration> confs = null;
 		
-		if (!theQuery.getResultList().isEmpty()) {
+		if (!theQuery.list().isEmpty()) {
 			confs = theQuery.getResultList();
 		}
 		
