@@ -3,60 +3,66 @@ package com.pos.springdemo.dao.impl;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.pos.springdemo.dao.ConfigDAO;
 import com.pos.springdemo.entity.Configuration;
+import com.pos.springdemo.entity.Product;
 
 @Repository
 public class ConfigDAOImpl implements ConfigDAO {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	
 	@Override
-	public List<Configuration> getConfigurations() {
-		// TODO Auto-generated method stub
-		return null;
+	public Configuration getConfiguration(int id) {
+		Session currentSession = sessionFactory.getCurrentSession(); 
+		
+		return currentSession.get(Configuration.class, id);
 	}
 
 	@Override
 	public void saveConfiguration(Configuration C) {
-		// TODO Auto-generated method stub
-
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.save(C);
 	}
 
 	@Override
 	public void updateConfiguration(Configuration C) {
-		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.saveOrUpdate(C);
+	}
 
+
+
+	@Override
+	public void deleteConfiguration(Configuration C) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.delete(C);
 	}
 
 	@Override
-	public Configuration getConfiguration(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Configuration searchConfiguration(String name) {
-		// TODO Auto-generated method stub
-		/**Templete for serarch
-Session currentSession = sessionFactory.getCurrentSession(); 
+	public List<Configuration> getConfigurations() {
 		
-		Query<> theQuery =
-						currentSession.createQuery("from  where name like '"+name+"%'", .class);
+		Session currentSession = sessionFactory.getCurrentSession(); 
 		
-		List<>  = theQuery.getResultList();
+		Query<Configuration> theQuery=
+				currentSession.createQuery("from Configuration", Configuration.class);
+		List<Configuration> confs = null;
 		
+		if (!theQuery.getResultList().isEmpty()) {
+			confs = theQuery.getResultList();
+		}
 		
-		return ;**/
-		
-		return null;
-	}
-
-	@Override
-	public void deleteConfiguration(int id) {
-		// TODO Auto-generated method stub
-
+		return confs;
 	}
 
 }

@@ -6,12 +6,11 @@ import com.pos.springdemo.entity.Configuration;
 
 public interface ConfigDAO {
 
+	public Configuration getConfiguration(int id);
 	public List<Configuration> getConfigurations();
 	public void saveConfiguration(Configuration C );
 	public void updateConfiguration(Configuration C);
-	public Configuration getConfiguration(int id);
-	public Configuration searchConfiguration(String name);
-	public void deleteConfiguration(int id);
+	public void deleteConfiguration(Configuration C);
 	
 	/*Templete for DAOs
 	public List<> get(int id);

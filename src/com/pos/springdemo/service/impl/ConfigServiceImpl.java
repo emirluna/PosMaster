@@ -18,8 +18,8 @@ public class ConfigServiceImpl implements ConfigService {
 	
 	@Override
 	@Transactional
-	public List<Configuration> getConfigurations() {
-		return configDao.getConfigurations();
+	public Configuration getConfiguration(int id) {
+		return configDao.getConfiguration(id);
 	}
 
 	@Override
@@ -34,22 +34,19 @@ public class ConfigServiceImpl implements ConfigService {
 		configDao.updateConfiguration(C);
 	}
 
+	
 	@Override
 	@Transactional
-	public Configuration getConfiguration(int id) {
-		return configDao.getConfiguration(id);
+	public void deleteConfiguration(Configuration C) {
+		configDao.deleteConfiguration(C);
 	}
 
-	@Override
-	@Transactional
-	public Configuration searchConfiguration(String name) {
-		return configDao.searchConfiguration(name);
-	}
+
 
 	@Override
-	@Transactional
-	public void deleteConfiguration(int id) {
-		configDao.deleteConfiguration(id);
+	public List<Configuration> getConfigurations() {
+		configDao.getConfigurations();
+		return null;
 	}
 
 }
