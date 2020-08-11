@@ -36,11 +36,11 @@
 <c:forEach var="tempConfigs" items="${configurations}">
 		<tr>
 			<td>${tempConfigs.id}</td>
-			<td>${tempConfigs.company_name}</td>
+			<td>${tempConfigs.companyName}</td>
 			<td>${tempConfigs.description}</td>
-			<td>${tempConfigs.owner_name}</td>
-			<td>${tempConfigs.main_email}</td>
-			<td>${tempConfigs.main_phone}</td>
+			<td>${tempConfigs.ownerName}</td>
+			<td>${tempConfigs.mainEmail}</td>
+			<td>${tempConfigs.mainPhone}</td>
 			<td><a href="${pageContext.request.contextPath}/configuration/edit/${tempConfigs.id}">Edit</a></td>
 			<td><a href="${pageContext.request.contextPath}/configuration/delete/${tempConfigs.id}">Delete</a></td>
 		</tr>

@@ -45,7 +45,7 @@ public class ConfigurationController {
 		
 		configS.saveConfiguration(newConfig);
 		
-		return "Configurations/index-config";
+		return "redirect:/configuration/";
 	}
 	
 	@RequestMapping("/edit/${id}")
