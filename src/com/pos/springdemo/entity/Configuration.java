@@ -35,8 +35,7 @@ public class Configuration {
 	@Column(name="main_phone")
 	private String MainPhone;
 	
-	@OneToOne(fetch= FetchType.LAZY,
-			cascade=CascadeType.ALL)
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="main_address")
 	private Address address;
 
@@ -105,6 +104,13 @@ public class Configuration {
 	}
 
 	public Configuration() {
+	}
+
+	@Override
+	public String toString() {
+		return "Configuration [Id=" + Id + ", CompanyName=" + CompanyName + ", Description=" + Description
+				+ ", OwnerName=" + OwnerName + ", MainEmail=" + MainEmail + ", MainPhone=" + MainPhone + ", address="
+				+ address + "]";
 	}
 	
 	
