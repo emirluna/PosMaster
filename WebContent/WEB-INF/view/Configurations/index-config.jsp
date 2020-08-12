@@ -18,10 +18,10 @@
 <div class="container">
 <div>
 <h2>Current Configuration</h2>
-
+<br><br>
 <c:if test="${configurations == null}">
 	<h4 class="color-red">There isn´t a configuration created yet</h4>
-	<a href="${pageContext.request.contextPath}/configuration/form">Create Configuration</a>
+	<br><a href="${pageContext.request.contextPath}/configuration/form">Create Configuration</a>
 </c:if>
 
 <table class="table">

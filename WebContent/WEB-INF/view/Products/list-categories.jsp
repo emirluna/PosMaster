@@ -25,7 +25,7 @@
 <c:forEach var="tempCategories" items="${categories}">
 		<tr>
 			<td>${tempCategories.id}</td>
-			<td>${tempCategories.categoryName}</td>
+			<td>${tempCategories.name}</td>
 			<c:url var="updateLink" value="/categories/edit">
 			<c:param name="id" value="${tempCategories.id}" />
 			</c:url>
@@ -36,7 +36,7 @@
 </table>
 
 <br><br>
-<a href="${pageContext.request.contextPath}/products">
+<a href="${pageContext.request.contextPath}/products/">
 Go Back</a>
 
 </body>

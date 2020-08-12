@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pos.springdemo.entity.Category;
-import com.pos.springdemo.entity.Configuration;
 import com.pos.springdemo.entity.Product;
 import com.pos.springdemo.service.CategoryService;
 import com.pos.springdemo.service.ProductService;
@@ -24,7 +23,6 @@ public class ProductController {
 	@Autowired
 	private ProductService productS;
 	
-	
 	@Autowired
 	private CategoryService categoryS;
 	
@@ -32,10 +30,10 @@ public class ProductController {
 	@RequestMapping("/")
 	public String indexProducts(Model theModel) {
 		
-		List<Product> theProducts = productS.getProducts();
+		//List<Product> theProducts = productS.getProducts();
 		List<Category> theCategory = categoryS.getCategories();
 		
-		theModel.addAttribute("products", theProducts);
+		//theModel.addAttribute("products", theProducts);
 		theModel.addAttribute("categories", theCategory);
 		
 		return "Products/index-products";
@@ -70,7 +68,7 @@ public class ProductController {
 		
 		Category theCategory = new Category();
 		
-		theModel.addAttribute("category", theCategory);
+		theModel.addAttribute("Category", theCategory);
 		
 		return "Products/category-form";
 	}
@@ -80,12 +78,15 @@ public class ProductController {
 
 	@RequestMapping("/product-form")
 	public String showProductForm(Model theModel) {
-		
-		Product theProduct = new Product();
+			List<Category> theCategories = 
+				categoryS.getCategories();
+			
+			Product theProduct = new Product();
 		
 		theModel.addAttribute("product", theProduct);
+		theModel.addAttribute("categories", theCategories);
 		
-		return "Product/product-form";
+		return "Products/product-form";
 	}
 	
 	
@@ -146,5 +147,5 @@ public class ProductController {
 		
 		return "redirect:/products/";
 	}
-	
+
 }
