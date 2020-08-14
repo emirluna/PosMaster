@@ -1,5 +1,6 @@
 package com.pos.springdemo.controller;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class ProductController {
 	@Autowired
 	private CategoryService categoryS;
 	
+//	private LinkedHashMap<String, String> categoryOptions;
 	
 	@RequestMapping("/")
 	public String indexProducts(Model theModel) {
@@ -78,10 +80,15 @@ public class ProductController {
 
 	@RequestMapping("/product-form")
 	public String showProductForm(Model theModel) {
-			List<Category> theCategories = 
+		
+		List<Category> theCategories = 
 				categoryS.getCategories();
-			
-			Product theProduct = new Product();
+		
+		//categoryOptions = new LinkedHashMap<>();
+		
+		
+		
+		Product theProduct = new Product();
 		
 		theModel.addAttribute("product", theProduct);
 		theModel.addAttribute("categories", theCategories);

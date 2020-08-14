@@ -1,6 +1,7 @@
 package com.pos.springdemo.entity;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -207,6 +208,7 @@ public class Product {
 	}
 	
 	public Product(){
+		
 	}
 
 	@Override
