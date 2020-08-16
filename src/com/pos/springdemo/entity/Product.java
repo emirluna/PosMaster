@@ -43,7 +43,7 @@ public class Product {
 	@Column(name="barcode")
 	private String Barcode;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="category_id")
 	private Category category;
 	
@@ -199,12 +199,13 @@ public class Product {
 		Barcode = barcode;
 	}
 
-	public Product(String name, String shortName, int measure, float price, String barcode) {
+	public Product(String name, String shortName, int measure, float price, String barcode, Category Category) {
 		Name = name;
 		ShortName = shortName;
 		Measure = measure;
 		Price = price;
 		Barcode = barcode;
+		category = Category;
 	}
 	
 	public Product(){

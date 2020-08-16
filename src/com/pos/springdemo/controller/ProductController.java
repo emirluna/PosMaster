@@ -108,7 +108,21 @@ public class ProductController {
 	@RequestMapping("/save-product")
 	public String saveProduct(@ModelAttribute("product") Product newProduct) {
 		
+		System.out.println(newProduct);
+		
+		Category cat = categoryS.getCategory(newProduct.getCategory().getId());
+		
+		System.out.println(cat);
+		
+		//newProduct.setCategory(cat);
+		
 		productS.saveProduct(newProduct);
+		
+		//cat.add(newProduct);
+		
+		//categoryS.updateCategory(cat);
+		
+		//productS.saveProduct(newProduct);
 		
 		return "redirect:/products/products";
 	}

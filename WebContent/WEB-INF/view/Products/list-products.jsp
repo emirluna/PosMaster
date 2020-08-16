@@ -29,7 +29,7 @@
 <c:forEach var="tempProducts" items="${products}">
 		<tr>
 			<td>${tempProducts.id}</td>
-			<td>${tempProducts.productName}</td>
+			<td>${tempProducts.name}</td>
 			<td>${tempProducts.shortName}</td>
 			<td>${tempProducts.measure}</td>
 			<td>${tempProducts.price}</td>

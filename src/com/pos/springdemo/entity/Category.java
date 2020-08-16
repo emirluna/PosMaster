@@ -23,9 +23,8 @@ public class Category {
 	
 	@Column(name="name")
 	private String Name;
-/*
-	@OneToMany(mappedBy="category",
-			cascade= CascadeType.ALL)
+
+	@OneToMany(mappedBy="category")
 	private List<Product> products;
 
 	
@@ -49,7 +48,7 @@ public class Category {
 		this.products = products;
 	}
 
-*/
+
 	public Category() {}
 	
 	

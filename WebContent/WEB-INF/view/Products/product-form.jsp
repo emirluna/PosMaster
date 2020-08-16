@@ -17,7 +17,7 @@
 <div>
 <div class="container">
 		<h3>Save Product</h3>
-	 	<form:form action="saveProduct" modelAttribute="product"
+	 	<form:form action="save-product" modelAttribute="product"
 			method="POST">
 			<!-- need to associate this data with customer id -->
 			<form:hidden path="Id"/>
@@ -46,7 +46,7 @@
 				<tr>
 					<td><label>Category: </label></td>
 					<td>
-					<form:select path="category">
+					<form:select path="category.id">
 						
 						<c:forEach var="temCategories" items="${categories}">
 							<form:option value="${temCategories.id}">${temCategories.name}</form:option>
