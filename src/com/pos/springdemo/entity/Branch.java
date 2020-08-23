@@ -41,7 +41,7 @@ public class Branch {
 	private Users User_;
 	
 
-	@OneToMany(fetch= FetchType.LAZY,
+	@OneToMany(fetch= FetchType.EAGER,
 			mappedBy="branches",
 			cascade= CascadeType.PERSIST)
 	private List<Stock> stocks;

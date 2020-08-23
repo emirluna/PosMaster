@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.pos.springdemo.entity.Address;
 import com.pos.springdemo.entity.Branch;
 import com.pos.springdemo.entity.Product;
+import com.pos.springdemo.entity.Stock;
 import com.pos.springdemo.service.AddressService;
 import com.pos.springdemo.service.BranchService;
+import com.pos.springdemo.service.ProductService;
+import com.pos.springdemo.service.StockService;
 
 @Controller
 @RequestMapping("/branches")
@@ -27,7 +30,11 @@ public class BranchController {
 	@Autowired
 	private AddressService addressS;
 	
+	@Autowired
+	private StockService stockS;
 	
+	@Autowired
+	private ProductService productS;
 	
 	@RequestMapping("/")
 	public String indexBranches(Model theModel) {
@@ -96,6 +103,43 @@ public class BranchController {
 	}
 
 
+	@GetMapping("/branch-stock-form")
+	public String branchStockForm(@RequestParam("id") int id, Model theModel) {
+		
+		Branch theBranch = branchS.getBranch(id);
+		
+		//if(theBranch.getStocks().isEmpty()) {
+			Stock Stocks = new Stock();
+		/*}else {
+			Stock Stocks = stockS.getStock(theBranch.getId());
+		}*/
+		
+		List<Product> products = productS.getProducts();
+		
+		theModel.addAttribute("branch", theBranch);
+		theModel.addAttribute("stock", Stocks);
+		theModel.addAttribute("product", products);
+		
+		return "Branchs/branch-stock-form";
+	}
+	
+	
+	
+	@RequestMapping("/saveBranchStock/{id}")
+	public String saveBranchStock(@PathVariable("id") int id, @ModelAttribute("stock") Stock newStock) {
+
+		stockS.saveStock(newStock);
+		
+		Branch theBranch = branchS.getBranch(id);
+		
+		theBranch.add(newStock);
+		
+		branchS.updateBranch(theBranch);
+		
+		return "redirect:/branches/list";
+	}
+	
+	
 }
 
 

@@ -33,8 +33,9 @@ public class StockDAOImpl implements StockDAO {
 
 	@Override
 	public void saveStock(Stock s) {
-		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
 		
+		currentSession.save(s);
 	}
 
 

@@ -35,7 +35,7 @@
 			<td>Address</td>
 			
 		</tr>
-			<h2>${branches}</h2>
+	
 		<c:forEach var="tempBranches" items="${branches}">
 			<tr>
 				<td>${tempBranches.id}</td>
@@ -49,6 +49,19 @@
 					</c:when>
 					<c:otherwise>
 						<td><a>See Address</a></td>
+					</c:otherwise>
+				</c:choose>
+				
+				
+				<c:choose>
+					<c:when test="${tempBranches.stocks.isEmpty()}">
+						<c:url var="StockLink" value="branch-stock-form">
+						<c:param name="id" value="${tempBranches.id}" />
+						</c:url>
+						<td><a href="${StockLink}">Add Products</a></td>
+					</c:when>
+					<c:otherwise>
+						<td><a>See Stock</a></td>
 					</c:otherwise>
 				</c:choose>
 				
