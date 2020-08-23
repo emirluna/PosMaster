@@ -42,7 +42,10 @@
 				<td>${tempBranches.branchName}</td>
 				<c:choose>
 					<c:when test="${tempBranches.address_ == null}">
-						<td><a>Add an Address</a></td>
+						<c:url var="AddressLink" value="branch-address-form">
+						<c:param name="id" value="${tempBranches.id}" />
+						</c:url>
+						<td><a href="${AddressLink}">Add an Address</a></td>
 					</c:when>
 					<c:otherwise>
 						<td><a>See Address</a></td>
