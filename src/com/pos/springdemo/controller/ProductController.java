@@ -1,6 +1,5 @@
 package com.pos.springdemo.controller;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +26,14 @@ public class ProductController {
 	@Autowired
 	private CategoryService categoryS;
 	
-//	private LinkedHashMap<String, String> categoryOptions;
 	
 	@RequestMapping("/")
 	public String indexProducts(Model theModel) {
 		
-		//List<Product> theProducts = productS.getProducts();
+		List<Product> theProducts = productS.getProducts();
 		List<Category> theCategory = categoryS.getCategories();
 		
-		//theModel.addAttribute("products", theProducts);
+		theModel.addAttribute("products", theProducts);
 		theModel.addAttribute("categories", theCategory);
 		
 		return "Products/index-products";
@@ -100,7 +98,7 @@ public class ProductController {
 	@RequestMapping("/save-category")
 	public String saveCategory(@ModelAttribute("category") Category newCategory) {
 		
-		categoryS.saveCategory(newCategory);
+		categoryS.updateCategory(newCategory);
 		
 		return "redirect:/products/categories";
 	}
@@ -108,37 +106,33 @@ public class ProductController {
 	@RequestMapping("/save-product")
 	public String saveProduct(@ModelAttribute("product") Product newProduct) {
 		
-		System.out.println(newProduct);
+		/*
+		//System.out.println(newProduct);
 		
-		Category cat = categoryS.getCategory(newProduct.getCategory().getId());
-		
-		System.out.println(cat);
-		
-		//newProduct.setCategory(cat);
-		
-		productS.saveProduct(newProduct);
+		//Category cat = categoryS.getCategory(newProduct.getCategory().getId());
 		
 		//cat.add(newProduct);
-		
+
 		//categoryS.updateCategory(cat);
-		
-		//productS.saveProduct(newProduct);
+		*/
+		productS.saveProduct(newProduct);
+
 		
 		return "redirect:/products/products";
 	}
 	
 	
-	@GetMapping("/categories/edit")
+	@GetMapping("/edit-category")
 	public String editCategory(@RequestParam("id") int id, Model theModel) {
 		Category theCategory = categoryS.getCategory(id);
 		
-		theModel.addAttribute("category", theCategory);
+		theModel.addAttribute("Category", theCategory);
 		
 		return "Products/category-form";
 	}
 	
 	
-	@GetMapping("/products/edit")
+	@GetMapping("/edit-product")
 	public String editProduct(@RequestParam("id") int id, Model theModel) {
 		Product theProduct = productS.getProduct(id);
 		
@@ -148,18 +142,18 @@ public class ProductController {
 	}
 	
 	
-	@RequestMapping("/categories/delete/{id}")
+	@RequestMapping("/delete-category/{id}")
 	public String deleateCategory(@PathVariable("id") int id, Model theModel) {
 
 		Category theCategory = categoryS.getCategory(id);
 		
 		categoryS.deleteCategory(theCategory);
 		
-		return "redirect:/categories/";
+		return "redirect:/products/categories/";
 	}
 	
 	
-	@RequestMapping("/products/delete/{id}")
+	@RequestMapping("/delete-product/{id}")
 	public String deleateProduct(@PathVariable("id") int id, Model theModel) {
 
 		Product theProduct = productS.getProduct(id);

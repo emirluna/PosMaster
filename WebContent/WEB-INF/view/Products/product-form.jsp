@@ -55,6 +55,28 @@
 					</form:select>
 					</td>
 				</tr>
+					<h3>Product Details</h3>
+				<tr>
+					<td><label>Brand: </label></td>
+					<td><form:input path="detail.brand" /></td>
+				</tr>
+				
+				<tr>
+					<td><label>Description: </label></td>
+					<td><form:input path="detail.description" /></td>
+				</tr>
+				
+				<tr>
+					<td><label>Weight: </label></td>
+					<td><form:input path="detail.weight" /></td>
+				</tr>
+				
+				<tr>
+					<td><label>Splitable: </label></td>
+					<td><form:radiobutton path="detail.splitable"/></td>
+				</tr>
+				
+				
 				
 				<tr>
 					<td><label></label></td>
@@ -69,7 +91,7 @@
 </div>
 </div>
 <br><br>
-<a href="${pageContext.request.contextPath}/configuration/">
+<a href="${pageContext.request.contextPath}/products/">
 Go Back</a>
 
 

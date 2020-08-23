@@ -25,8 +25,8 @@ public class ProductDetail {
 	@Column(name="weight")
 	private float Weight;
 	
-	@Column(name="spitable")
-	private boolean Spitable;
+	@Column(name="splitable")
+	private boolean Splitable;
 	
 	public int getId() {
 		return Id;
@@ -57,11 +57,11 @@ public class ProductDetail {
 		return "ProductDetail [Id=" + Id + ", Brand=" + Brand + ", Description=" + Description + "]";
 	}
 
-	public ProductDetail(String brand, String description, float weight, boolean spitable) {
+	public ProductDetail(String brand, String description, float weight, boolean splitable) {
 		Brand = brand;
 		Description = description;
 		Weight = weight;
-		Spitable = spitable;
+		Splitable = splitable;
 	}
 	
 	public ProductDetail() {}
@@ -74,12 +74,12 @@ public class ProductDetail {
 		Weight = weight;
 	}
 
-	public boolean isSpitable() {
-		return Spitable;
+	public boolean isSplitable() {
+		return Splitable;
 	}
 
-	public void setSpitable(boolean spitable) {
-		Spitable = spitable;
+	public void setSplitable(boolean splitable) {
+		Splitable = splitable;
 	}
 
 

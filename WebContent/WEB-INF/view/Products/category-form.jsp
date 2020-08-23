@@ -39,7 +39,7 @@
 </div>
 </div>
 <br><br>
-<a href="${pageContext.request.contextPath}/configuration/">
+<a href="${pageContext.request.contextPath}/products/categories">
 Go Back</a>
 
 

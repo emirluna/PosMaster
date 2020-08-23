@@ -15,7 +15,7 @@
 
 <h2>Products Table</h2>
 <br>
-<a href="${pageContext.request.contextPath}/product-form">Create Product</a>
+<a href="${pageContext.request.contextPath}/products/product-form">Create Product</a>
 <br><br>
 <table class="table">
 <tr>
@@ -34,18 +34,18 @@
 			<td>${tempProducts.measure}</td>
 			<td>${tempProducts.price}</td>
 			<td>${tempProducts.barcode}</td>
-			<c:url var="updateLink" value="/products/edit">
+			<c:url var="updateLink" value="/products/edit-product">
 			<c:param name="id" value="${tempProducts.id}" />
 			</c:url>
 			<td><a href="${updateLink}">Edit</a></td>
-			<td><a href="${pageContext.request.contextPath}/products/delete/${tempProducts.id}">Delete</a></td>
+			<td><a href="${pageContext.request.contextPath}/products/delete-product/${tempProducts.id}">Delete</a></td>
 		</tr>
 </c:forEach>
 </table>
 
 
 <br><br>
-<a href="${pageContext.request.contextPath}/products">
+<a href="${pageContext.request.contextPath}/products/">
 Go Back</a>
 
 </body>

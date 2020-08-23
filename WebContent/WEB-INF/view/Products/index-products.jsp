@@ -43,12 +43,12 @@
 	<h2>Products</h2><br><br>
 	<div class="row">
 	<c:choose>
-		<c:when test="${prdoucts == null}">
+		<c:when test="${products == null}">
 		<h4 class="color-red">There isn´t a Products created yet</h4>
 		<br><a href="${pageContext.request.contextPath}/products/product-form">Create Product</a>
 		</c:when>
 		<c:otherwise>
-		<a href="${pageContext.request.contextPath}/products">See Products</a>
+		<a href="${pageContext.request.contextPath}/products/products">See Products</a>
 		</c:otherwise>
 	</c:choose>
 	
