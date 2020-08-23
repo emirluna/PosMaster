@@ -32,23 +32,23 @@ public class Branch {
 	private String BranchName;
 
 
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="address_id")
 	private Address Address_;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="user_id")
 	private Users User_;
 	
 
 	@OneToMany(fetch= FetchType.LAZY,
 			mappedBy="branches",
-			cascade= CascadeType.ALL)
+			cascade= CascadeType.PERSIST)
 	private List<Stock> stocks;
 	
 	@OneToMany(fetch= FetchType.LAZY,
 			mappedBy="Branch_",
-			cascade= CascadeType.ALL)
+			cascade= CascadeType.PERSIST)
 	private List<Sale> sales;
 	
 	public void add(Stock tempStock) {

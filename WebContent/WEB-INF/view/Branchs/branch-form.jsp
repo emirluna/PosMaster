@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
@@ -24,7 +25,7 @@
 
 	<div id="container">
 		<h3>Save Branch</h3>
-		<form:form action="${pageContext.request.contextPath}/branches/saveBranch/${id_enterprise}" modelAttribute="branch"
+		<form:form action="saveBranch" modelAttribute="branch"
 			method="POST">
 			
 			<table>

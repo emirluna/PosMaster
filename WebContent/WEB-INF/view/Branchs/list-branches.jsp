@@ -25,23 +25,30 @@
 		<div id="content">
 
 			<input type="button" value="Add Branch"
-			onclick="window.location.href='showFormAdd/${enterpriseId}'; return false;"
+			onclick="window.location.href='branch-form'; return false;"
 			class="add-button" />
-<!-- ${tempBranches.enterprise.id} -->
 
 	<table>
 		<tr>
 			<td>ID</td>
 			<td>Branch Name</td>
-			<td>Stocks</td>
+			<td>Address</td>
+			
 		</tr>
-
+			<h2>${branches}</h2>
 		<c:forEach var="tempBranches" items="${branches}">
 			<tr>
 				<td>${tempBranches.id}</td>
 				<td>${tempBranches.branchName}</td>
-				<!-- <td>${tempBranches.address}</td> -->
-				<td><a href="stocks/${tempBranches.id}">See Stocks</a></td>
+				<c:choose>
+					<c:when test="${tempBranches.address_ == null}">
+						<td><a>Add an Address</a></td>
+					</c:when>
+					<c:otherwise>
+						<td><a>See Address</a></td>
+					</c:otherwise>
+				</c:choose>
+				
 				</tr>
 		</c:forEach>
 

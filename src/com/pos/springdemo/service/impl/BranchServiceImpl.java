@@ -27,8 +27,7 @@ public class BranchServiceImpl implements BranchService {
 	@Override
 	@Transactional
 	public List<Branch> getBranches() {
-		branchDAO.getBranches();
-		return null;
+		return branchDAO.getBranches();
 	}
 
 	@Override
