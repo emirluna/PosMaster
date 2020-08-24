@@ -23,7 +23,7 @@ public class StockDAOImpl implements StockDAO {
 	Session currentSession = sessionFactory.getCurrentSession(); 
 		
 		Query<Stock> theQuery=
-				currentSession.createQuery("from Stock where id_branch="+s, Stock.class);
+				currentSession.createQuery("from Stock where branch_id="+s, Stock.class);
 		
 		List<Stock> stocks = theQuery.getResultList();		
 		

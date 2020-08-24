@@ -102,29 +102,6 @@ public class BranchController {
 		return "redirect:/branches/list";
 	}
 
-
-	@GetMapping("/branch-stock-form")
-	public String branchStockForm(@RequestParam("id") int id, Model theModel) {
-		
-		Branch theBranch = branchS.getBranch(id);
-		
-		//if(theBranch.getStocks().isEmpty()) {
-			Stock Stocks = new Stock();
-		/*}else {
-			Stock Stocks = stockS.getStock(theBranch.getId());
-		}*/
-		
-		List<Product> products = productS.getProducts();
-		
-		theModel.addAttribute("branch", theBranch);
-		theModel.addAttribute("stock", Stocks);
-		theModel.addAttribute("product", products);
-		
-		return "Branchs/branch-stock-form";
-	}
-	
-	
-	
 	@RequestMapping("/saveBranchStock/{id}")
 	public String saveBranchStock(@PathVariable("id") int id, @ModelAttribute("stock") Stock newStock) {
 
@@ -138,6 +115,72 @@ public class BranchController {
 		
 		return "redirect:/branches/list";
 	}
+
+	@GetMapping("/branch-stock-form")
+	public String branchStockForm(@RequestParam("id") int id, Model theModel) {
+		
+		Branch theBranch = branchS.getBranch(id);
+		
+		List<Product> products = productS.getProducts();
+		
+		List<Product> Products = null;
+		
+		List<Stock> stocks = stockS.getStocks(id);
+		
+		for (int j=0; j<stocks.size(); j++) {
+			for (int i= 0; i<products.size(); i++) {	
+				if(products.get(i).getId() == stocks.get(j).getProducts().getId()) {
+					products.remove(i);
+				}
+			}
+		} 
+		
+		
+		theModel.addAttribute("branch", theBranch);
+		
+		theModel.addAttribute("product", products);
+		
+		return "Branchs/branch-stock-form";
+	}
+	
+	
+	@GetMapping("/branch-stock-add")
+	public String branchAddStockForm(@RequestParam("idBranch") int idBranch, @RequestParam("idProduct") int idProduct, Model theModel) {
+	
+		Branch theBranch = branchS.getBranch(idBranch);
+		
+		Product theProduct = productS.getProduct(idProduct);
+		
+		List<Product> products = productS.getProducts();
+		
+		Stock theStock = new Stock();
+		
+		theModel.addAttribute("branch", theBranch);
+		
+		theModel.addAttribute("product", theProduct);
+		
+		theModel.addAttribute("products", products);
+		
+		theModel.addAttribute("stock", theStock);
+		
+		return "Branchs/branch-stock-form-add";
+	}
+	
+	
+	@RequestMapping("/saveBranchStockAdd/{id}")
+	public String saveBranchStockAdd(@PathVariable("id") int id, @ModelAttribute("stock") Stock newStock) {
+
+		stockS.saveStock(newStock);
+		
+		Branch theBranch = branchS.getBranch(id);
+		
+		theBranch.add(newStock);
+		
+		branchS.updateBranch(theBranch);
+		
+		return "redirect:/branches/list";
+	}
+	
 	
 	
 }

@@ -27,9 +27,15 @@
 				<th>Add</th>
 			</tr>
 	
-
-		<c:forEach var="tempProd" items="${product}">	
-				<tr>
+		<c:forEach var="tempProd" items="${products}">
+			<c:forEach var="tempBranchProd" items="${branch.stocks}">
+			
+				<c:choose>
+					<c:when test="${tempBranchProd.products.id == tempProd.id}">
+					
+					</c:when>
+					<c:otherwise>
+					<tr>
 						<td>
 							${tempProd.id}
 						</td>
@@ -47,11 +53,11 @@
 						<td><a href="${AddLink}" class="btn btn-primary">Add Product</a></td>
 						
 					</tr>	
-			
-			</c:forEach>
+					</c:otherwise>	
+				</c:choose>
 		
-		
-		
+		</c:forEach>
+		</c:forEach>
 		
 		</table>
 			
@@ -75,6 +81,35 @@
 				<th>Min Stock</th>
 				<th>Max Stock</th>
 			</tr>
+		
+		<form:form action="saveBranchStockAdd/${branch.id}" modelAttribute="stock"
+			method="POST">
+		
+		<table>
+				<form:hidden path="products.id" value="${product.id}"/>		
+				<form:hidden path="branches.id" value="${branch.id}"/>
+				<tr>
+					<td><label>Stock: </label></td>
+					<td><form:input path="stock" /></td>
+				</tr>
+				<tr>
+					<td><label>Min Stock: </label></td>
+					<td><form:input path="minStock" /></td>
+				</tr>
+				<tr>
+					<td><label>Max Stock: </label></td>
+					<td><form:input path="maxStock" /></td>
+				</tr>
+			
+				<tr>
+					<td><label></label></td>
+					<td><input type="submit" value="Save" class="save" /></td>
+				</tr>
+			</table>
+		
+		</form:form>
+		
+		
 		
 		<c:forEach var="tempBranchStock" items="${branch.stocks}">
 			<tr>
