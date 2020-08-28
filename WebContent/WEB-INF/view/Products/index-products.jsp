@@ -12,50 +12,59 @@
 </head>
 <body>
 <div class="container">
-	<div class="row">
-		Total Categories
-		<c:forEach var="tempCategories" items="${categories}">
-			${tempCategories.id}
-		</c:forEach>	
+	
+<h2>Categories</h2><br><br>
+<div class="row">
+
+<c:choose>
+	<c:when test="${categories == null}">
+	<h4 class="color-red">There isn´t a Categories created yet</h4>
+	<br><a href="${pageContext.request.contextPath}/products/category-form">Create Category</a>
+	</c:when>
+	<c:otherwise>
+	<a href="${pageContext.request.contextPath}/products/categories">See Category</a>
+	</c:otherwise>
+</c:choose>
+
+
+		
 	</div>
-</div>
 
 
-<div>
-<div>
-<h2>List of Categories</h2>
-<ol>
-	<li>Category One</li>
-	<li>Category Two</li>
-	<li>Category Three</li>
-</ol>
-<a href="${pageContext.request.contextPath}/newCategories/">
-New Categories</a>
-<br><br>
 
-</div>
+
+
+
+
 
 <br><br>
 <br><br>
-<div class="conatiner">
-<div>
-<ol>
-	<li>Product One</li>
-	<li>Product Two</li>
-	<li>Product Three</li>
-</ol>
-<a href="${pageContext.request.contextPath}/newProduct/">
-New Product</a>
+	
+	<h2>Products</h2><br><br>
+	<div class="row">
+	<c:choose>
+		<c:when test="${products == null}">
+		<h4 class="color-red">There isn´t a Products created yet</h4>
+		<br><a href="${pageContext.request.contextPath}/products/product-form">Create Product</a>
+		</c:when>
+		<c:otherwise>
+		<a href="${pageContext.request.contextPath}/products/products">See Products</a>
+		</c:otherwise>
+	</c:choose>
+	
+		
+
+		
+	</div>
+
 <br><br>
 </div>
 
-</div>
 
-</div>
-<br><br>
 
 
 
+</div>
 <a href="${pageContext.request.contextPath}">
 Go Back</a>
 <br><br>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.pos.springdemo.dao.CategoryDAO;
 import com.pos.springdemo.entity.Branch;
 import com.pos.springdemo.entity.Category;
+import com.pos.springdemo.entity.Configuration;
 
 @Repository
 public class CategoryDAOImpl implements CategoryDAO{
@@ -26,13 +27,14 @@ public class CategoryDAOImpl implements CategoryDAO{
 		Session currentSession = sessionFactory.getCurrentSession(); 
 		
 		//create a query
-				Query<Category> theQuery =
-						currentSession.createQuery("from Category", Category.class);
-						//createQuery("from Customer", Customer.class);
-				
-				//execute query and get results
-		List<Category> categories = theQuery.getResultList();
+		Query<Category> theQuery =
+		currentSession.createQuery("from Category", Category.class);
+
+		List<Category> categories = null;
 		
+		if (!theQuery.list().isEmpty()) {
+			categories = theQuery.getResultList();
+		}
 		
 		return categories;
 	}

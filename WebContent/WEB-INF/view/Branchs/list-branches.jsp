@@ -9,7 +9,7 @@
 
 <link type="text/css"
 	  rel="stylesheet" 
-	  href="${pageContext.request.contextPath}/resources/css/style.css" >
+	  href="${pageContext.request.contextPath}/resources/css/bootstrap.css" >
 
 </head>
 <body>
@@ -24,24 +24,56 @@
 <div id="container">
 		<div id="content">
 
+			<input type="button" value="Go Back"
+			onclick="window.location.href='../'; return false;"
+			class="btn btn-warning" />
+
 			<input type="button" value="Add Branch"
-			onclick="window.location.href='showFormAdd/${enterpriseId}'; return false;"
-			class="add-button" />
-<!-- ${tempBranches.enterprise.id} -->
-
-	<table>
+			onclick="window.location.href='branch-form'; return false;"
+			class="btn btn-primary" />
+<br><br>
+	<table class="table">
 		<tr>
-			<td>ID</td>
-			<td>Branch Name</td>
-			<td>Stocks</td>
+			<th>ID</th>
+			<th>Branch Name</th>
+			<th>Address</th>
+			<th>Stocks</th>
+			<th>Admin</th>
+			<th>Sales</th>
 		</tr>
-
+	
 		<c:forEach var="tempBranches" items="${branches}">
 			<tr>
 				<td>${tempBranches.id}</td>
 				<td>${tempBranches.branchName}</td>
-				<!-- <td>${tempBranches.address}</td> -->
-				<td><a href="stocks/${tempBranches.id}">See Stocks</a></td>
+				<c:choose>
+					<c:when test="${tempBranches.address_ == null}">
+						<c:url var="AddressLink" value="branch-address-form">
+						<c:param name="id" value="${tempBranches.id}" />
+						</c:url>
+						<td><a href="${AddressLink}">Add an Address</a></td>
+					</c:when>
+					<c:otherwise>
+						<td><a>See Address</a></td>
+					</c:otherwise>
+				</c:choose>
+				
+				
+				<c:choose>
+					<c:when test="${tempBranches.stocks.isEmpty()}">
+						<c:url var="StockLink" value="branch-stock-form">
+						<c:param name="id" value="${tempBranches.id}" />
+						</c:url>
+						<td><a href="${StockLink}">Add Products</a></td>
+					</c:when>
+					<c:otherwise>
+					<c:url var="StockAddLink" value="branch-stock-form">
+						<c:param name="id" value="${tempBranches.id}" />
+					</c:url>	
+						<td><a href="${StockAddLink}">See Stock</a></td>
+					</c:otherwise>
+				</c:choose>
+				
 				</tr>
 		</c:forEach>
 

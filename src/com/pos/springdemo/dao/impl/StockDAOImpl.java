@@ -23,7 +23,7 @@ public class StockDAOImpl implements StockDAO {
 	Session currentSession = sessionFactory.getCurrentSession(); 
 		
 		Query<Stock> theQuery=
-				currentSession.createQuery("from Stock where id_branch="+s, Stock.class);
+				currentSession.createQuery("from Stock where branch_id="+s, Stock.class);
 		
 		List<Stock> stocks = theQuery.getResultList();		
 		
@@ -33,8 +33,9 @@ public class StockDAOImpl implements StockDAO {
 
 	@Override
 	public void saveStock(Stock s) {
-		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
 		
+		currentSession.save(s);
 	}
 
 

@@ -33,10 +33,5 @@ public class HomeController {
 		return "Users/index-users";
 	}
 	
-	@RequestMapping("/branches/")
-	public String branches(Model theModel) {
-		return "Branchs/index-branch";
-	}
-	
 
 }

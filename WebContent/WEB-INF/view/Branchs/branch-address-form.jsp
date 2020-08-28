@@ -25,15 +25,40 @@
 
 	<div id="container">
 		<h3>Save Branch</h3>
-		<form:form action="saveBranch" modelAttribute="branch"
+		<form:form action="saveBranchAddress/${branchId}" modelAttribute="address"
 			method="POST">
-			
 			<table>
 				<tr>
-					<td><label>Branch Name: </label></td>
-					<td><form:input path="branchName" /></td>
-					
+					<td><label>Country: </label></td>
+					<td><form:input path="country" /></td>
 				</tr>
+				
+				<tr>
+					<td><label>State: </label></td>
+					<td><form:input path="state" /></td>
+				</tr>	
+				
+				<tr>
+					<td><label>City: </label></td>
+					<td><form:input path="city" /></td>
+				</tr>
+				
+				<tr>
+					<td><label>Street: </label></td>
+					<td><form:input path="street" /></td>
+				</tr>
+				
+				
+				<tr>
+					<td><label>Number: </label></td>
+					<td><form:input path="number" /></td>
+				</tr>
+				
+				<tr>
+					<td><label>ZipCode: </label></td>
+					<td><form:input path="zipCode" /></td>
+				</tr>
+				
 				<tr>
 					<td><label></label></td>
 					<td><input type="submit" value="Save" class="save" /></td>
