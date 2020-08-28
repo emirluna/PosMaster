@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Customer")
+@Table(name="custumerdetail")
 public class CustomerDetail {
 
 	@Id
@@ -43,13 +43,13 @@ public class CustomerDetail {
 	@Column(name="verification_code")
 	private String VerificationCode;
 
-	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="address_id")
 	private Address Address_;
 
 	public int getId() {
 		return Id;
-	}
+	}	
 
 	public void setId(int id) {
 		Id = id;
@@ -119,15 +119,12 @@ public class CustomerDetail {
 		Address_ = address_;
 	}
 
-	public CustomerDetail(Date birthDate, Date registrationDate, Date lastOperation, int lastBuy, String username,
-			String password, String verificationCode) {
-		BirthDate = birthDate;
-		RegistrationDate = registrationDate;
-		LastOperation = lastOperation;
-		LastBuy = lastBuy;
+	public CustomerDetail(Date birthDate, String username,
+			String password, Date registrationDate) {
+		BirthDate = birthDate;	
 		Username = username;
 		Password = password;
-		VerificationCode = verificationCode;
+		RegistrationDate = registrationDate;
 	}
 
 	public CustomerDetail() {
