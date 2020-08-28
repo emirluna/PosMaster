@@ -9,7 +9,7 @@
 
 <link type="text/css"
 	  rel="stylesheet" 
-	  href="${pageContext.request.contextPath}/resources/css/style.css" >
+	  href="${pageContext.request.contextPath}/resources/css/bootstrap.css" >
 
 </head>
 <body>
@@ -24,16 +24,22 @@
 <div id="container">
 		<div id="content">
 
+			<input type="button" value="Go Back"
+			onclick="window.location.href='../'; return false;"
+			class="btn btn-warning" />
+
 			<input type="button" value="Add Branch"
 			onclick="window.location.href='branch-form'; return false;"
-			class="add-button" />
-
-	<table>
+			class="btn btn-primary" />
+<br><br>
+	<table class="table">
 		<tr>
-			<td>ID</td>
-			<td>Branch Name</td>
-			<td>Address</td>
-			
+			<th>ID</th>
+			<th>Branch Name</th>
+			<th>Address</th>
+			<th>Stocks</th>
+			<th>Admin</th>
+			<th>Sales</th>
 		</tr>
 	
 		<c:forEach var="tempBranches" items="${branches}">
@@ -61,7 +67,10 @@
 						<td><a href="${StockLink}">Add Products</a></td>
 					</c:when>
 					<c:otherwise>
-						<td><a>See Stock</a></td>
+					<c:url var="StockAddLink" value="branch-stock-form">
+						<c:param name="id" value="${tempBranches.id}" />
+					</c:url>	
+						<td><a href="${StockAddLink}">See Stock</a></td>
 					</c:otherwise>
 				</c:choose>
 				

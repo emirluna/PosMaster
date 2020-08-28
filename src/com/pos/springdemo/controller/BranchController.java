@@ -43,10 +43,10 @@ public class BranchController {
 		
 		theModel.addAttribute("branches", theBranches);
 		
-		return "Branchs/index-branch";
+		return "Branchs/list-branches";
 	}
 	
-	@RequestMapping("/list")
+	/*@RequestMapping("/list")
 	public String branchList(Model theModel) {
 	
 		List<Branch> theBranches = branchS.getBranches();
@@ -54,7 +54,7 @@ public class BranchController {
 		theModel.addAttribute("branches", theBranches);
 		
 		return "Branchs/list-branches";
-	}
+	}*/
 	
 	
 	@RequestMapping("/branch-form")
@@ -99,7 +99,7 @@ public class BranchController {
 		
 		branchS.updateBranch(theBranch);
 		
-		return "redirect:/branches/list";
+		return "redirect:/branches/";
 	}
 
 	@RequestMapping("/saveBranchStock/{id}")
@@ -113,7 +113,7 @@ public class BranchController {
 		
 		branchS.updateBranch(theBranch);
 		
-		return "redirect:/branches/list";
+		return "redirect:/branches/";
 	}
 
 	@GetMapping("/branch-stock-form")
@@ -123,26 +123,20 @@ public class BranchController {
 		
 		List<Product> products = productS.getProducts();
 		
-		List<Product> Products = null;
-		
 		List<Stock> stocks = stockS.getStocks(id);
 		
-		for (int j=0; j<stocks.size(); j++) {
-			for (int i= 0; i<products.size(); i++) {	
-				if(products.get(i).getId() == stocks.get(j).getProducts().getId()) {
-					products.remove(i);
-				}
-			}
-		} 
+		List<Product> Products = getProductAvailablesList(products, stocks); 
+		
 		
 		
 		theModel.addAttribute("branch", theBranch);
 		
-		theModel.addAttribute("product", products);
+		theModel.addAttribute("product", Products);
 		
 		return "Branchs/branch-stock-form";
 	}
-	
+
+
 	
 	@GetMapping("/branch-stock-add")
 	public String branchAddStockForm(@RequestParam("idBranch") int idBranch, @RequestParam("idProduct") int idProduct, Model theModel) {
@@ -151,7 +145,16 @@ public class BranchController {
 		
 		Product theProduct = productS.getProduct(idProduct);
 		
-		List<Product> products = productS.getProducts();
+		List<Product> Products = productS.getProducts();
+		
+		List<Stock> stocks = stockS.getStocks(idBranch);
+		
+		if (!stocks.isEmpty()) {
+		
+		//List<Product> 
+		Products = getProductAvailablesList(Products, stocks); 
+		
+		}		
 		
 		Stock theStock = new Stock();
 		
@@ -159,7 +162,7 @@ public class BranchController {
 		
 		theModel.addAttribute("product", theProduct);
 		
-		theModel.addAttribute("products", products);
+		theModel.addAttribute("products", Products);
 		
 		theModel.addAttribute("stock", theStock);
 		
@@ -178,7 +181,21 @@ public class BranchController {
 		
 		branchS.updateBranch(theBranch);
 		
-		return "redirect:/branches/list";
+		return "redirect:/branches/";
+	}
+	
+	
+	
+	
+	public List<Product> getProductAvailablesList(List<Product> products, List<Stock> stocks) {
+		for (int j=0; j<stocks.size(); j++) {
+			for (int i= 0; i<products.size(); i++) {	
+				if(products.get(i).getId() == stocks.get(j).getProducts().getId()) {
+					products.remove(i);
+				}
+			}
+		}
+		return products;
 	}
 	
 	
