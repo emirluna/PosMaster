@@ -1,5 +1,8 @@
 package com.pos.springdemo.controller;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.SecureRandom;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.pos.springdemo.entity.Account;
 import com.pos.springdemo.entity.Branch;
 import com.pos.springdemo.entity.Customer;
+import com.pos.springdemo.service.AccountService;
 import com.pos.springdemo.service.CustomerService;
 
 @Controller
@@ -19,6 +24,9 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerS;
+	
+	@Autowired
+	private AccountService accountS;
 	
 	
 	@RequestMapping("/")
@@ -71,8 +79,28 @@ public class CustomerController {
 	
 		customerS.updateCustomer(newCustomer);
 		
+		Account newAccount = new Account(0, "claveTest", 0, 0);
+		
+		accountS.saveAccount(newAccount);
+		
+		newCustomer.setAccount_(newAccount);
+		
+		customerS.updateCustomer(newCustomer);
+		
 		return "redirect:/customers/";
 	}
+	
+	
+	@RequestMapping("/customer-details")
+	public String customerDetails(@RequestParam("id") int id, Model theModel) {
+		
+		Customer theCustomer = customerS.getCustomer(id);
+		
+		theModel.addAttribute("customer", theCustomer);
+		
+	return "Customers/customer-details";
+	}
+	
 	
 	
 	
