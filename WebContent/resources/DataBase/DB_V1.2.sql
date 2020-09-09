@@ -239,9 +239,9 @@ COLLATE = utf8_spanish2_ci;
 
 
 -- -----------------------------------------------------
--- Table `PosMaster`.`Poduct`
+-- Table `PosMaster`.`Product`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `PosMaster`.`Poduct` (
+CREATE TABLE IF NOT EXISTS `PosMaster`.`Product` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `short_name` VARCHAR(10) NULL DEFAULT NULL,
