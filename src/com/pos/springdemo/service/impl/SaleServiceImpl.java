@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.pos.springdemo.dao.SaleDAO;
 import com.pos.springdemo.entity.Sale;
 import com.pos.springdemo.service.SaleService;
-import com.sun.xml.internal.ws.api.server.SDDocument;
 
 @Service
 public class SaleServiceImpl implements SaleService {

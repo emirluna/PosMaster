@@ -34,8 +34,8 @@
         <!--  <property name="jdbcUrl" value="jdbc:mysql://192.168.1.81:3306/PosAdmin?useSSL=false&amp;serverTimezone=UTC" />
         <property name="user" value="eljefe21" />-->
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/PosMaster?useSSL=false&amp;serverTimezone=UTC" />
-        <property name="user" value="eljefe21" />
-        <property name="password" value="#A2021a2021" /> 
+        <property name="user" value="master" />
+        <property name="password" value="@905M4573r" /> 
 
         <!-- these are connection pool properties for C3P0 -->
 		<property name="initialPoolSize" value="5"/>
